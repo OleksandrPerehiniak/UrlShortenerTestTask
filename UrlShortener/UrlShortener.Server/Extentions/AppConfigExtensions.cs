@@ -23,7 +23,7 @@ namespace UrlShortener.Server.Extentions
         IConfiguration config)
     {
       app.UseCors(options =>
-      options.WithOrigins("http://localhost:4200", "http://localhost:52066")
+      options.WithOrigins("http://localhost:4200", "http://localhost:52066", "https://localhost:52066")
       .AllowAnyMethod()
       .AllowAnyHeader());
       return app;
