@@ -1,0 +1,41 @@
+<div class="container mt-4">
+  @if (isLoggedIn()) {
+    <div class="mb-3">
+      <h3>Add New URL</h3>
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Enter URL to shorten" [(ngModel)]="newUrl" />
+        <button class="btn btn-primary" (click)="shortenUrl()">Shorten</button>
+      </div>
+      @if (errorMessage()) {
+        <div class="alert alert-danger mt-2">{{ errorMessage() }}</div>
+      }
+    </div>
+  }
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Original URL</th>
+        <th>Short URL</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (url of urls(); track url.id) {
+        <tr>
+          <td><a [href]="url.longUrl" target="_blank">{{ url.longUrl }}</a></td>
+          <td><a [href]="url.shortUrl" target="_blank">{{ url.shortUrl }}</a></td>
+          <td>
+            @if (isLoggedIn()) {
+              <a [routerLink]="['/info', url.code]" class="btn btn-primary btn-sm">Info</a>
+            }
+            @if (canDelete(url)) {
+              <button class="btn btn-danger btn-sm ms-2" (click)="deleteUrl(url.id)">Delete</button>
+            }
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+

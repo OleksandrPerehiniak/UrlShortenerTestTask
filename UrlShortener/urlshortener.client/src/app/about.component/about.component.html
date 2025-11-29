@@ -1,0 +1,9 @@
+<div class="mx-3">
+  <h4>URL Shortening Algorithm</h4>
+
+  <p>This URL shortening algorithm generates short codes using a 62-character alphabet containing lowercase letters, uppercase letters, and digits. Each code is 7 characters long, which provides approximately 3.5 trillion possible combinations.</p>
+
+  <p>When a user requests to shorten a URL, the algorithm first extracts their user ID from the authentication claims. It then checks if this specific user has already shortened this exact URL before - if so, it simply returns the existing short code rather than creating a duplicate.</p>
+
+  <p>If it's a new URL for that user, the algorithm generates a random 7-character code using the defined alphabet. It creates a new database record containing the original long URL, the generated code, the full shortened URL (base URL plus code), a timestamp, and the user's ID. After saving this to the database, it returns the shortened URL.</p>
+</div>

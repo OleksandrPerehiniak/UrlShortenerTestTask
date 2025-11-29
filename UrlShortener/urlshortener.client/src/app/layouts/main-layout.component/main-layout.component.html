@@ -1,0 +1,27 @@
+<nav id="sidebar" class="navbar bg-body-tertiary vh-100 flex-column justify-content-start">
+  <div class="container-fluid justify-content-center p-1">
+    <a class="navbar-brand h1 fw-bold text-success mb-3" routerLink="/urls">
+      Url Shortener
+    </a>
+  </div>
+  <ul class="nav flex-column w-100 px-3">
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/urls">URLs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" routerLink="/about">About</a>
+    </li>
+  </ul>
+</nav>
+<div id="main">
+  <nav class="navbar bg-body-tertiary">
+    <div class="container-fluid px-5 py-1">
+      <button *ngIf="authService.isLoggedIn()" class="btn btn-dark" (click)="onLogout()">Logout</button>
+      <button *ngIf="!authService.isLoggedIn()" class="btn btn-dark" [routerLink]="['/signin']">Login</button>
+    </div>
+  </nav>
+  <div class="mt-5 p-5">
+    <router-outlet />
+  </div>
+</div>
+
